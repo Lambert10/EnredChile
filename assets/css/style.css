@@ -26,25 +26,34 @@ body {
 }
 
 .client-logo {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: white;
-    border: 2px solid #ccc;
-    border-radius: 16px; /* redondeado suave, no circular */
-    overflow: hidden;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .client-logo img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* asegúrate de que no se recorte ni deforme */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
+.client-name {
+  font-size: 14px;
+  margin-top: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
 
 .card-img-bottom {
     width: 100%;
@@ -86,4 +95,32 @@ body {
     flex-direction: column;
     justify-content: space-between;
     object-fit: contain !important;
+}
+
+.carousel-item .row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.carousel-indicators {
+  margin-top: 40px;
+  justify-content: center !important;
+}
+
+#carouselClientes {
+  position: relative;
+  padding-bottom: 90px;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #003366;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.carousel-indicators .active {
+  background-color: #FFA000;
 }

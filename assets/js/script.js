@@ -1,5 +1,81 @@
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert("Gracias por contactarnos. Te responderemos pronto.");
-    this.reset();
+document.addEventListener("DOMContentLoaded", function () {
+  const clientes = [
+    { nombre: "Cintazul", imagen: "./assets/img/Cintazul.png" },
+    { nombre: "Codelco", imagen: "./assets/img/Codelco.jpg" },
+    { nombre: "Fundación Chile", imagen: "./assets/img/images.png" },
+    { nombre: "Andes Iron", imagen: "./assets/img/andes-iron.jpg" },
+    { nombre: "BancoEstado", imagen: "./assets/img/bancoestado3.jpg" },
+    { nombre: "Agrosuper", imagen: "./assets/img/Agrosuper-1.webp" },
+    { nombre: "Consalud", imagen: "./assets/img/consalud.png" },
+    { nombre: "Bupa", imagen: "./assets/img/Bupa.webp" },
+    { nombre: "Cencosud", imagen: "./assets/img/Cencosud.webp" },
+    { nombre: "Cruzblanca", imagen: "./assets/img/cruzblanca.png" },
+    { nombre: "Alemana Seguros", imagen: "./assets/img/alemanaseguros.png" },
+    { nombre: "Clínica Bicentenario", imagen: "./assets/img/clinicabicentenario.jpg" },
+    { nombre: "Nueva Masvida", imagen: "./assets/img/nuevamasvida.png" },
+    { nombre: "Avis Latam", imagen: "./assets/img/avislatam.png" },
+    { nombre: "Stracon", imagen: "./assets/img/stracon_logo.png" },
+    { nombre: "ADP", imagen: "./assets/img/ADP.webp" },
+    { nombre: "BHP", imagen: "./assets/img/bhp.png" },
+    { nombre: "SOFOFA", imagen: "./assets/img/Sofofa.png" },
+    { nombre: "Municipalidad la Florida", imagen: "./assets/img/municipalidadlaflorida.png" },
+    { nombre: "Municipalidad Lo Prado", imagen: "./assets/img/municipalidadloprado.png" },
+    { nombre: "Guillermo Morales", imagen: "./assets/img/guillermomorales.jpg" },
+    { nombre: "ING", imagen: "./assets/img/Ing.png" },
+    { nombre: "Ameco", imagen: "./assets/img/ameco_south_america_logo.jpeg" },
+    { nombre: "Corporación Providencia", imagen: "./assets/img/corpoprovi.png" },
+  ];
+
+  const carouselInner = document.getElementById("carousel-inner-clientes");
+  const indicators = document.getElementById("carousel-indicators-clientes");
+
+  const itemsPerSlide = 4;
+  const numSlides = Math.ceil(clientes.length / itemsPerSlide);
+
+  for (let i = 0; i < numSlides; i++) {
+    const grupo = clientes.slice(i * itemsPerSlide, (i + 1) * itemsPerSlide);
+
+    const item = document.createElement("div");
+    item.className = "carousel-item" + (i === 0 ? " active" : "");
+
+    const row = document.createElement("div");
+    row.className = "d-flex flex-wrap justify-content-center";
+
+    grupo.forEach(cliente => {
+      const col = document.createElement("div");
+      col.style.flex = "1 0 25%"; // 25% del ancho (100% / 4)
+      col.style.maxWidth = "25%";
+      col.className = "d-flex flex-column align-items-center justify-content-center mb-4 text-center";
+
+      col.innerHTML = `
+        <div class="client-logo">
+          <img src="${cliente.imagen}" alt="${cliente.nombre}">
+        </div>
+        <p class="text-center mt-2">${cliente.nombre}</p>
+      `;
+      row.appendChild(col);
+    });
+
+    item.appendChild(row);
+    carouselInner.appendChild(item);
+
+    const indicator = document.createElement("button");
+    indicator.type = "button";
+    indicator.setAttribute("data-bs-target", "#carouselClientes");
+    indicator.setAttribute("data-bs-slide-to", `${i}`);
+    if (i === 0 && indicator) indicator.classList.add("active");
+    indicators.appendChild(indicator);
+  }
+
+  const carouselElement = document.getElementById("carouselClientes");
+  const carousel = new bootstrap.Carousel(carouselElement, {
+    interval: 3500,
+    ride: true
+  });
+
+  carouselElement.addEventListener("slid.bs.carousel", function (e) {
+    if (e.to === numSlides - 1) {
+      setTimeout(() => carousel.to(0), 3500);
+    }
+  });
 });
