@@ -25,6 +25,10 @@ body {
   color: #333 !important;
 }
 
+.text-shadow {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
 
 .hero {
     background-color: #e6f2ff;
