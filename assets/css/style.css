@@ -95,6 +95,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     object-fit: contain !important;
+    text-align: center;
 }
 
 .carousel-item .row {
@@ -123,4 +124,88 @@ body {
 
 .carousel-indicators .active {
   background-color: #FFA000;
+}
+
+
+/*Aquí están los efectos de giro en las cards*/
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  perspective: 1200px;
+  min-height: 420px;
+  justify-content: center;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  min-height: 420px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/*Esto es para mantener el ancho de la nueva card*/
+
+.col-md-3 .flip-card {
+  max-width: 100%;
+  width: 100%;
+}
+
+.flip-card-inner {
+  max-width: 280px; /* o el valor que tenía visualmente antes */
+  margin: auto;
+}
+
+
+/*Colores personalizados*/
+
+.bg-red {
+  background-color: #cc0000 !important;
+}
+
+.bg-blue {
+  background-color: #1800AD !important;
+}
+
+.text-enred {
+  color: #d8d7d8 !important;
+}
+
+.border-enred {
+  border-color: #1800AD  !important;
 }
