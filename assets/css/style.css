@@ -2,13 +2,29 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.navbar {
-    background-color: #003366;
+/* Estado inicial transparente */
+/* Estado inicial con fondo semi-transparente negro */
+#mainNavbar {
+  background-color: rgba(0, 0, 0, 0.5); /* oscuro con opacidad */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar-brand, .nav-link {
-    color: #fff !important;
+
+#mainNavbar .nav-link {
+  color: white !important;
+  transition: color 0.3s ease;
 }
+
+/* Al hacer scroll: fondo blanco y textos oscuros */
+#mainNavbar.navbar-scrolled {
+  background-color: white;
+  box-shadow: 5px 2px 4px rgba(0,0,0,0.9);
+}
+
+#mainNavbar.navbar-scrolled .nav-link {
+  color: #333 !important;
+}
+
 
 .hero {
     background-color: #e6f2ff;
