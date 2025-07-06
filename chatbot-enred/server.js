@@ -8,12 +8,12 @@ app.use(express.json())
 
 const OPENROUTER_API_KEY = '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'
 
-// Ruta GET opcional para ver si el servidor está activo
+// Ruta GET de prueba
 app.get('/chat', (req, res) => {
-  res.send("Chatbot activo. Usa POST para enviar mensajes.");
+  res.send("Chatbot activo. Usa POST para enviar mensajes.")
 })
 
-// Ruta POST real para el chatbot
+// Ruta principal del chatbot
 app.post('/chat', async (req, res) => {
   try {
     const { message } = req.body
@@ -36,7 +36,7 @@ app.post('/chat', async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'OpenRouter-Referer': 'https://enredchile.onrender.com',
+          'OpenRouter-Referer': 'https://enredchile.netlify.app', // ⚠️ ¡IMPORTANTE!
           'Content-Type': 'application/json'
         }
       }
@@ -46,7 +46,8 @@ app.post('/chat', async (req, res) => {
     res.json({ reply })
 
   } catch (error) {
-    console.error('❌ Error al generar respuesta:', error.response?.data || error.message)
+    console.error('❌ Error al generar respuesta COMPLETO:')
+    console.error(error) // Imprime todo el objeto de error
     res.status(500).json({ reply: 'Ocurrió un error al conectar con el chatbot.' })
   }
 })
