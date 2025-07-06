@@ -4,7 +4,6 @@ import axios from 'axios'
 
 const app = express()
 
-// ✅ Configuración correcta de CORS
 app.use(cors({
   origin: 'https://enredchilecl.netlify.app',
   methods: ['GET', 'POST'],
@@ -13,15 +12,12 @@ app.use(cors({
 
 app.use(express.json())
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
 
-
-// Ruta GET de prueba
 app.get('/chat', (req, res) => {
   res.send("Chatbot activo. Usa POST para enviar mensajes.")
 })
 
-// Ruta principal del chatbot
 app.post('/chat', async (req, res) => {
   try {
     const { message } = req.body
@@ -29,13 +25,13 @@ app.post('/chat', async (req, res) => {
     const response = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: 'mistralai/mistral-7b-instruct',
+        model: 'openai/gpt-3.5-turbo', // ✅ modelo seguro
         messages: [
           {
             role: 'system',
-            content: 'Eres el asistente oficial de Enred Chile. Tu tono es profesional, cercano y claro. Ayudas a explicar nuestros servicios de consultoría, formación y estrategia organizacional. Si el usuario hace una pregunta genérica, preséntale brevemente lo que ofrecemos y ofrece asistencia amable. Siempre responde en español. Si te preguntan por algún contacto da este número de contacto de Ignacio Lambert +56976231513'
+            content: 'Eres el asistente oficial de Enred Chile. Tu tono es profesional, cercano y claro...'
           },
-          { 
+          {
             role: 'user',
             content: message
           }
@@ -44,7 +40,8 @@ app.post('/chat', async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'OpenRouter-Referer': 'https://enredchilecl.netlify.app',
+          'HTTP-Referer': 'https://enredchilecl.netlify.app', // ✅ corrección
+          'X-Title': 'Chatbot Enred Chile',
           'Content-Type': 'application/json'
         }
       }
@@ -55,12 +52,12 @@ app.post('/chat', async (req, res) => {
 
   } catch (error) {
     console.error('❌ Error al generar respuesta COMPLETO:')
-    console.error(error)
+    console.error(error.response?.data || error.message)
     res.status(500).json({ reply: 'Ocurrió un error al conectar con el chatbot.' })
   }
 })
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log(`✅ Servidor escuchando con OpenRouter en http://localhost:${PORT}`)
+  console.log(`✅ Servidor escuchando en http://localhost:${PORT}`)
 })
