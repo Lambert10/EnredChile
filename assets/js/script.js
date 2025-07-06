@@ -109,3 +109,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+//aqui está el codigo del chatbot
+
+  async function sendChatMessage() {
+  const input = document.getElementById('chat-input')
+  const output = document.getElementById('chat-output')
+  const message = input.value.trim()
+  if (!message) return
+
+  output.innerHTML += `<div><strong>Tú:</strong> ${message}</div>`
+  input.value = ''
+  output.scrollTop = output.scrollHeight
+
+  try {
+    const res = await fetch('http://localhost:3000/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    })
+    const data = await res.json()
+    output.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`
+    output.scrollTop = output.scrollHeight
+  } catch (error) {
+    output.innerHTML += `<div style="color: red;">❌ Error al conectar con el chatbot</div>`
+  }
+}
+
+// Mostrar/ocultar el chat
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('chat-toggle')
+  const chatWidget = document.getElementById('chat-widget')
+  const closeBtn = document.getElementById('chat-close')
+
+  toggleBtn.addEventListener('click', () => {
+    chatWidget.style.display = chatWidget.style.display === 'none' ? 'block' : 'none'
+  })
+
+  closeBtn.addEventListener('click', () => {
+    chatWidget.style.display = 'none'
+  })
+
+  document.getElementById('chat-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendChatMessage()
+  })
+})

@@ -334,9 +334,6 @@
   </div>
 </section>
 
-   <section id="contacto" class="container py-5">
-  <h2 class="section-title text-center">Contacto</h2>
-
  <section id="contacto" class="container py-5">
   <h2 class="section-title text-center">Contacto</h2>
 
@@ -369,6 +366,26 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
 </section>
+
+
+<!-- Chatbot -->
+<!-- Botón flotante -->
+<div id="chat-toggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer;">
+  <button style="background-color: #cc0000; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px;">💬</button>
+</div>
+
+<!-- Widget flotante de chat -->
+<div id="chat-widget" style="position: fixed; bottom: 90px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); display: none; z-index: 1000;">
+  <div style="background-color: #cc0000; color: white; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+    <strong>Chat Enred</strong>
+    <span id="chat-close" style="float: right; cursor: pointer;">✖</span>
+  </div>
+  <div id="chat-output" style="height: 200px; overflow-y: auto; padding: 10px; font-size: 14px;"></div>
+  <div style="padding: 10px; border-top: 1px solid #ddd;">
+    <input type="text" id="chat-input" placeholder="Escribe un mensaje..." style="width: 100%; padding: 5px;">
+  </div>
+</div>
+
 
 
 
