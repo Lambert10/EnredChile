@@ -337,7 +337,10 @@
    <section id="contacto" class="container py-5">
   <h2 class="section-title text-center">Contacto</h2>
 
-  <!-- Mapa dirección oficina-->
+ <section id="contacto" class="container py-5">
+  <h2 class="section-title text-center">Contacto</h2>
+
+  <!-- Mapa -->
   <div class="mb-4">
     <h4 class="text-center">Dónde estamos</h4>
     <div class="ratio ratio-16x9">
@@ -349,23 +352,24 @@
     </div>
   </div>
 
-  <!-- Formulario -->
-  <form id="contact-form" class="mb-3">
+  <!-- Formulario conectado a Formspree -->
+  <form id="contact-form" action="https://formspree.io/f/xkgbakwl" method="POST">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre:</label>
-      <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Tu nombre" required>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Correo electrónico:</label>
-      <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+      <input type="email" class="form-control" id="email" name="_replyto" placeholder="tu@email.com" required>
     </div>
     <div class="mb-3">
       <label for="message" class="form-label">Mensaje:</label>
-      <textarea class="form-control" id="message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+      <textarea class="form-control" id="message" name="message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
 </section>
+
 
 
     <!-- FOOTER -->

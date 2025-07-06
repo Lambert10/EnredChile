@@ -89,3 +89,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      alert('Gracias por tu mensaje. Te responderemos pronto.');
+      form.reset();
+    } else {
+      alert('Ocurrió un error al enviar. Inténtalo más tarde.');
+    }
+  });
+
