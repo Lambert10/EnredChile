@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //aqui está el codigo del chatbot
 
-  async function sendChatMessage() {
+async function sendChatMessage() {
   const input = document.getElementById('chat-input')
   const output = document.getElementById('chat-output')
   const message = input.value.trim()
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
   output.scrollTop = output.scrollHeight
 
   try {
-    const res = await fetch('https://https://enredchile.onrender.com', {
+    const res = await fetch('https://enredchile.onrender.com/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message })

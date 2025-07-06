@@ -8,6 +8,12 @@ app.use(express.json())
 
 const OPENROUTER_API_KEY = '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'
 
+// Ruta GET opcional para ver si el servidor está activo
+app.get('/chat', (req, res) => {
+  res.send("Chatbot activo. Usa POST para enviar mensajes.");
+})
+
+// Ruta POST real para el chatbot
 app.post('/chat', async (req, res) => {
   try {
     const { message } = req.body
@@ -19,7 +25,7 @@ app.post('/chat', async (req, res) => {
         messages: [
           {
             role: 'system',
-            content: 'Eres el asistente oficial de Enred Chile. Tu tono es profesional, cercano y claro. Ayudas a explicar nuestros servicios de consultoría, formación y estrategia organizacional. Si el usuario hace una pregunta genérica, preséntale brevemente lo que ofrecemos y ofrece asistencia amable. Siempre responde en español. Si te preguntan por algún contacto da este numero de contacto de Ignacio Lambert +56976231513'
+            content: 'Eres el asistente oficial de Enred Chile. Tu tono es profesional, cercano y claro. Ayudas a explicar nuestros servicios de consultoría, formación y estrategia organizacional. Si el usuario hace una pregunta genérica, preséntale brevemente lo que ofrecemos y ofrece asistencia amable. Siempre responde en español. Si te preguntan por algún contacto da este número de contacto de Ignacio Lambert +56976231513'
           },
           { 
             role: 'user',
@@ -30,7 +36,7 @@ app.post('/chat', async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'OpenRouter-Referer': 'http://localhost:3000',
+          'OpenRouter-Referer': 'https://enredchile.onrender.com',
           'Content-Type': 'application/json'
         }
       }
@@ -45,7 +51,8 @@ app.post('/chat', async (req, res) => {
   }
 })
 
-const PORT = 3000
+// Puerto dinámico para Render
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log(`✅ Servidor escuchando con OpenRouter en http://localhost:${PORT}`)
 })
