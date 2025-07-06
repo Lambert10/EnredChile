@@ -18,6 +18,9 @@ app.use(express.json())
 // ✅ Lee tu API Key desde las variables de entorno
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
 
+console.log("🔐 API Key leída desde entorno:", OPENROUTER_API_KEY ? "✅ OK" : "❌ NO DEFINIDA")
+
+
 // ✅ Ruta GET simple para verificar que el backend está vivo
 app.get('/chat', (req, res) => {
   res.send("✅ Chatbot activo. Usa POST para enviar mensajes.")
