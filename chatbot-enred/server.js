@@ -13,7 +13,8 @@ app.use(cors({
 
 app.use(express.json())
 
-const OPENROUTER_API_KEY = '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'
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+
 
 // Ruta GET de prueba
 app.get('/chat', (req, res) => {
