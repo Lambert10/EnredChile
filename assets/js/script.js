@@ -39,20 +39,30 @@ document.addEventListener("DOMContentLoaded", function () {
     item.className = "carousel-item" + (i === 0 ? " active" : "");
 
     const row = document.createElement("div");
-    row.className = "d-flex flex-wrap justify-content-center";
+    row.className = "row justify-content-center";
 
     grupo.forEach(cliente => {
       const col = document.createElement("div");
-      col.style.flex = "1 0 25%"; // 25% del ancho (100% / 4)
-      col.style.maxWidth = "25%";
-      col.className = "d-flex flex-column align-items-center justify-content-center mb-4 text-center";
+      col.className = "col-6 col-md-3 mb-4 d-flex flex-column align-items-center";
 
-      col.innerHTML = `
-        <div class="client-logo">
-          <img src="${cliente.imagen}" alt="${cliente.nombre}">
-        </div>
-        <p class="text-center mt-2">${cliente.nombre}</p>
-      `;
+      const card = document.createElement("div");
+      card.className = "client-logo text-center border rounded p-3";
+      card.style.width = "100%";
+
+      const img = document.createElement("img");
+      img.src = cliente.imagen;
+      img.alt = cliente.nombre;
+      img.className = "img-fluid";
+      img.style.maxHeight = "80px";
+      img.style.objectFit = "contain";
+
+      const name = document.createElement("p");
+      name.className = "text-center mt-2 small";
+      name.textContent = cliente.nombre;
+
+      card.appendChild(img);
+      col.appendChild(card);
+      col.appendChild(name);
       row.appendChild(col);
     });
 
@@ -63,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     indicator.type = "button";
     indicator.setAttribute("data-bs-target", "#carouselClientes");
     indicator.setAttribute("data-bs-slide-to", `${i}`);
-    if (i === 0 && indicator) indicator.classList.add("active");
+    if (i === 0) indicator.classList.add("active");
     indicators.appendChild(indicator);
   }
 
