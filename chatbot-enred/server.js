@@ -3,7 +3,14 @@ import cors from 'cors'
 import axios from 'axios'
 
 const app = express()
-app.use(cors())
+
+// ✅ Configuración correcta de CORS
+app.use(cors({
+  origin: 'https://enredchilecl.netlify.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}))
+
 app.use(express.json())
 
 const OPENROUTER_API_KEY = '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'
@@ -36,7 +43,7 @@ app.post('/chat', async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'OpenRouter-Referer': 'https://enredchile.netlify.app', // ⚠️ ¡IMPORTANTE!
+          'OpenRouter-Referer': 'https://enredchilecl.netlify.app',
           'Content-Type': 'application/json'
         }
       }
@@ -47,12 +54,11 @@ app.post('/chat', async (req, res) => {
 
   } catch (error) {
     console.error('❌ Error al generar respuesta COMPLETO:')
-    console.error(error) // Imprime todo el objeto de error
+    console.error(error)
     res.status(500).json({ reply: 'Ocurrió un error al conectar con el chatbot.' })
   }
 })
 
-// Puerto dinámico para Render
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log(`✅ Servidor escuchando con OpenRouter en http://localhost:${PORT}`)
