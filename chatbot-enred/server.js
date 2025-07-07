@@ -21,6 +21,9 @@ app.get('/chat', (req, res) => {
   res.send("Chatbot activo. Usa POST para enviar mensajes.")
 })
 
+console.log('🔐 API Key actual:', process.env.OPENROUTER_API_KEY)
+
+
 // Ruta principal del chatbot
 app.post('/chat', async (req, res) => {
   try {
