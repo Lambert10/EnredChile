@@ -1,28 +1,42 @@
 import express from 'express'
 import cors from 'cors'
 import axios from 'axios'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 
-// ✅ Middleware CORS configurado para responder preflight correctamente
-app.options('/chat', cors({
-  origin: 'https://enredchilecl.netlify.app',
-  methods: ['POST'],
+// ✅ Lista de orígenes permitidos
+const allowedOrigins = [
+  'https://enredchilecl.netlify.app',
+  'http://127.0.0.1:5500',
+  'http://localhost:5500',
+  'http://localhost:3000'
+]
+
+// ✅ Middleware CORS correcto para Render
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error(`❌ CORS bloqueado para origen: ${origin}`))
+    }
+  },
+  methods: ['GET', 'POST'],
+  credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 app.use(express.json())
 
-// ✅ Verifica que Render esté leyendo esta variable desde Environment
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
 
-// Ruta de prueba
+// Ruta GET de prueba
 app.get('/chat', (req, res) => {
-  res.send("Chatbot activo. Usa POST para enviar mensajes.")
+  res.send('Chatbot activo. Usa POST para enviar mensajes.')
 })
-
-console.log('🔐 API Key actual:', process.env.OPENROUTER_API_KEY)
-
 
 // Ruta principal del chatbot
 app.post('/chat', async (req, res) => {
@@ -47,7 +61,7 @@ app.post('/chat', async (req, res) => {
       {
         headers: {
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'OpenRouter-Referer': 'https://enredchilecl.netlify.app',
+          'OpenRouter-Referer': req.headers.origin || 'https://enredchilecl.netlify.app',
           'Content-Type': 'application/json'
         }
       }
@@ -63,7 +77,6 @@ app.post('/chat', async (req, res) => {
   }
 })
 
-// ✅ Escuchar en el puerto correcto que Render asigna
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log(`✅ Servidor escuchando en http://localhost:${PORT}`)
