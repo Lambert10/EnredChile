@@ -5,9 +5,9 @@ import axios from 'axios'
 const app = express()
 
 // ✅ Middleware CORS configurado para responder preflight correctamente
-app.use(cors({
+app.options('/chat', cors({
   origin: 'https://enredchilecl.netlify.app',
-  methods: ['GET', 'POST', 'OPTIONS'],
+  methods: ['POST'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
