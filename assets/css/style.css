@@ -35,6 +35,39 @@ body {
     padding: 80px 20px;
 }
 
+.quienes-somos-section {
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #1800AD, #CC0000, #002D5B, #FFA000);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: 0;
+  opacity: 0.8; /* Puedes ajustar esto si lo quieres más o menos intenso */
+  filter: brightness(0.8);
+}
+
+.quienes-somos-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animación */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 .section-title {
     margin-bottom: 30px;
 }
