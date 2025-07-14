@@ -12,7 +12,11 @@ const allowedOrigins = [
   'https://enredchilecl.netlify.app',
   'http://127.0.0.1:5500',
   'http://localhost:5500',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'http://www.enredchile.cl',
+  'http://enredchile.cl',
+  'https://www.enredchile.cl',
+  'https://enredchile.cl'
 ]
 
 // ✅ Middleware CORS correcto para Render
@@ -21,7 +25,8 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true)
     } else {
-      callback(new Error(`❌ CORS bloqueado para origen: ${origin}`))
+      console.warn(`❌ CORS bloqueado para origen no permitido: ${origin}`)
+      callback(new Error(`No permitido por CORS: ${origin}`))
     }
   },
   methods: ['GET', 'POST'],
