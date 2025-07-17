@@ -55,7 +55,7 @@ app.post('/chat', async (req, res) => {
         messages: [
           {
             role: 'system',
-            content: 'Eres el asistente oficial de Enred Chile. Tu tono es profesional, cercano y claro. Siempre responde en español. y de forma breve, si te preguntan por contacto, da este número de tu jefe Ignacio Lambert: +56976231513.'
+            content: 'Eres el asistente virtual de Enred Chile. Tu tono es profesional, cercano y claro. Siempre responde en español. y de forma breve.si te preguntan a que nos dedicamos o que hacemos, tienes que decir que somos una empresa consultora con mas de 20 años de experiencia y que los acompañamos para mejorar sus resultados. si te preguntan por contacto, da el numero de tu jefe Ignacio Lambert: +56976231513.'
           },
           {
             role: 'user',
