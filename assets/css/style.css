@@ -262,3 +262,50 @@ body {
 .border-enred {
   border-color: #1800AD  !important;
 }
+
+
+/* === Team (independiente) === */
+.team-section h2 { font-weight: 700; }
+
+.team-card {
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+.team-photo {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.team-badge {
+  background: #f0f3f7;
+  color: #223;
+  border: 1px solid #e2e7ef;
+  font-weight: 500;
+}
+
+.team-modal .modal-content { border-radius: 16px; }
+.team-modal .modal-header { border-bottom: 1px solid rgba(0,0,0,0.08); }
+
+/* Opción DARK: si usas la sección sobre un fondo oscuro, añade class "team--dark" al <section id="equipo"> */
+.team--dark .team-card {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-color: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+}
+.team--dark .team-badge {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+}
+.team--dark .text-muted { color: rgba(255,255,255,0.8) !important; }
+.team--dark .btn-outline-primary {
+  color: #fff;
+  border-color: #fff;
+}

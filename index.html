@@ -27,9 +27,11 @@
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item px-2"><a class="nav-link text-white" href="#inicio">Inicio</a></li>
         <li class="nav-item px-2"><a class="nav-link text-white" href="#quienes-somos">Quiénes Somos</a></li>
-        <li class="nav-item px-2"><a class="nav-link text-white" href="#clientes">Nuestros Clientes</a></li>
         <li class="nav-item px-2"><a class="nav-link text-white" href="#servicios">Servicios</a></li>
+        <li class="nav-item px-2"><a class="nav-link text-white" href="#equipo">Nuestro Equipo</a></li>
+        <li class="nav-item px-2"><a class="nav-link text-white" href="#clientes">Nuestros Clientes</a></li>
         <li class="nav-item px-3"><a class="nav-link text-white" href="#contacto">Contáctanos</a></li>
+        
       </ul>
     </div>
   </div>
@@ -308,34 +310,192 @@
   </div>
 </div>
 
-
-
   </div>
 </div>
 
 </section>
 
 
-     <!-- CLIENTES - AHORA COMO CARRUSEL -->
-    <section id="clientes" class="container py-5">
-  <h2 class="section-title text-center">Nuestros Clientes</h2>
-  <p class="text-center mb-4">Trabajamos con empresas líderes en diversas industrias.</p>
+<!-- =================== NUESTRO EQUIPO (SECCIÓN INDEPENDIENTE) =================== -->
+<section id="equipo" class="team-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-3">Nuestro equipo</h2>
+    <p class="text-center text-muted mb-5">
+      Un equipo multidisciplinario que combina estrategia, datos y gestión del cambio para lograr resultados medibles.
+    </p>
 
-  <div id="carouselClientes" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
-    <!-- Indicadores -->
-    <div class="carousel-indicators justify-content-center" id="carousel-indicators-clientes"></div>
+    <div class="row g-4">
+      <!-- Persona 1 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card team-card h-100">
+          <img src="./assets/img/team/Manuel_Ubilla.jpg" class="team-photo" alt="Manuel Ubilla ">
+          <div class="card-body">
+            <h6 class="mb-1">Manuel Ubilla</h6>
+            <p class="small mb-3 text-muted">Director</p>
+            <div class="d-flex flex-wrap gap-1 mb-3">
+              <span class="badge team-badge">Estrategia</span>
+              <span class="badge team-badge">Gestión del cambio</span>
+            </div>
 
-    <!-- Slides -->
-    <div class="carousel-inner" id="carousel-inner-clientes"></div>
+            <!-- Bio oculta (se inyecta en el modal) -->
+            <div class="team-bio d-none">
+              <p class="mb-2"><strong>Experiencia destacada</strong></p>
+              <ul class="mb-2">
+                <li>Ingeniero Comercial con MBA en la Universidad de Chile.</li>
+                <li>Máster en investigación (UAB).</li>
+                <li>Doctor en Educación (UAB) con sólida trayectoria en dirección de proyectos de cambio empresarial.</li>
+                <li>Especialista en toma de decisiones y estrategia de negocios.</li>
+                <li>Amplia experiencia como director de proyectos de consultoría y transformación organizacional.</li>
+              </ul>
+              <p class="mb-0"><strong>Formación:</strong> Ing. Comercial y Educación.</p>
+            </div>
 
-    <!-- Botones -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselClientes" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselClientes" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-outline-primary btn-sm team-profile-btn"
+                      data-name="Manuel Ubilla"
+                      data-role="Director">Ver perfil</button>
+              <!-- opcional: link a LinkedIn -->
+              <!-- <a href="https://linkedin.com/in/usuario" target="_blank" class="link-secondary small">LinkedIn</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persona 2 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card team-card h-100">
+          <img src="./assets/img/team/Ingrid_Badilla.png" class="team-photo" alt="Nombre 2">
+          <div class="card-body">
+            <h6 class="mb-1">Ingrid Badilla</h6>
+            <p class="small mb-3 text-muted">Gerente Adm. y Finanzas</p>
+            <div class="d-flex flex-wrap gap-1 mb-3">
+              <span class="badge team-badge">Finanzas</span>
+              <span class="badge team-badge">Administración</span>
+            </div>
+            <div class="team-bio d-none">
+              <p class="mb-2"><strong>Experiencia destacada</strong></p>
+              <ul class="mb-2">
+                <li>Ingeniero Comercial (U. de Tarapacá) y licenciada en ciencias de la administración de empresas (UTA).</li>
+                <li>Especialista en administración financiera y control de inversiones.</li>
+                <li>Experiencia en gestión de recursos humanos en el sector financiero.</li>
+                <li>Conocimiento integral de procesos administrativos y financieros para empresas.</li>
+              </ul>
+              <p class="mb-0"><strong>Formación:</strong> Ing. Comercial, Adm. y Finanzas.</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-outline-primary btn-sm team-profile-btn"
+                      data-name="Ingrid Badilla"
+                      data-role="Gerente de Finanzas">Ver perfil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persona 3 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card team-card h-100">
+          <img src="./assets/img/team/Ignacio Lambert.jpg" class="team-photo" alt="Nombre 3">
+          <div class="card-body">
+            <h6 class="mb-1">Ignacio Lambert</h6>
+            <p class="small mb-3 text-muted">Consultor</p>
+            <div class="d-flex flex-wrap gap-1 mb-3">
+              <span class="badge team-badge">Data Scientist</span>
+              <span class="badge team-badge">Full Stack Developer</span>
+            </div>
+            <div class="team-bio d-none">
+              <p class="mb-2"><strong>Experiencia destacada</strong></p>
+              <ul class="mb-2">
+                <li>Ingeniero Comercial (UNAB) con especialización en ciencia de datos y desarrollo full stack.</li>
+                <li>Experiencia en ingeniería de datos e inteligencia artificial aplicada en GCP y AWS.</li>
+                <li>Certificado en gestión de proyectos ágiles (Scrum Master).</li>
+                <li>Liderazgo en proyectos de transformación digital y analítica avanzada.</li>
+              </ul>
+              <p class="mb-0"><strong>Formación:</strong> Ingeniero Comercial </p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-outline-primary btn-sm team-profile-btn"
+                      data-name="Ignacio Lambert"
+                      data-role="Consultor">Ver perfil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persona 4 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card team-card h-100">
+          <img src="./assets/img/team/Claudia_Villarroel.jpg" class="team-photo" alt="Nombre 4">
+          <div class="card-body">
+            <h6 class="mb-1">Claudia Villarroel</h6>
+            <p class="small mb-3 text-muted">Coordinadora de Proyectos</p>
+            <div class="d-flex flex-wrap gap-1 mb-3">
+              <span class="badge team-badge">Comunicación estratégica</span>
+              <span class="badge team-badge">Story telling</span>
+            </div>
+            <div class="team-bio d-none">
+              <p class="mb-2"><strong>Experiencia destacada</strong></p>
+              <ul class="mb-2">
+                <li>Publicista y licenciada en comunicación social (UDP) con diplomado en comunicación visual (PUC).</li>
+                <li>Especialista en comunicación estratégica, storytelling y redacción creativa.</li>
+                <li>Experiencia en diseño, gestión y coordinación de proyectos comunicacionales.</li>
+                <li>Capacidad para integrar estrategias creativas con objetivos corporativos.</li>
+              </ul>
+              <p class="mb-0"><strong>Formación:</strong> Publicista y Comunicación Audio Visual</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-outline-primary btn-sm team-profile-btn"
+                      data-name="Claudia Villarroel"
+                      data-role="Coordinadora de Proyectos">Ver perfil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal (único) -->
+    <div class="modal fade" id="teamProfileModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content team-modal">
+          <div class="modal-header">
+            <div>
+              <h5 class="modal-title" id="teamProfileTitle">Nombre</h5>
+              <small class="text-muted" id="teamProfileRole">Rol</small>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body" id="teamProfileBody"><!-- aquí va la bio --></div>
+          <div class="modal-footer">
+            <a href="#contacto" class="btn btn-primary">Conversemos</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+<!-- =================== /NUESTRO EQUIPO =================== -->
+
+
+
+     <!-- CLIENTES - AHORA COMO CARRUSEL -->
+<section id="clientes" class="container py-5">
+    <h2 class="section-title text-center">Nuestros Clientes</h2>
+    <p class="text-center mb-4">Trabajamos con empresas líderes en diversas industrias.</p>
+
+    <div id="carouselClientes" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+      <!-- Indicadores -->
+      <div class="carousel-indicators justify-content-center" id="carousel-indicators-clientes"></div>
+
+      <!-- Slides -->
+      <div class="carousel-inner" id="carousel-inner-clientes"></div>
+
+      <!-- Botones -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselClientes" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselClientes" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
 </section>
 
   <!-- Mapa -->
